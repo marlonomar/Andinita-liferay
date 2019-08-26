@@ -5,22 +5,11 @@
 <html class="${root_css_class}" dir="<@liferay.language key="lang.dir" />" lang="${w3c_language_id}">
 
 <head>
-	<title>Andinita</title>
+	<title>${the_title} - ${company_name}</title>
 
 	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
 
 	<@liferay_util["include"] page=top_head_include />
-
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
 </head>
 
 <body class="${css_class}">
@@ -33,11 +22,32 @@
 
 <div class="container-fluid" id="wrapper">
 	<header id="banner" role="banner">
-	<h1>andinita</h1>
+		<div id="heading">
+			<h1 class="site-title">
+				<a class="${logo_css_class}" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
+					<img alt="${logo_description}" height="${site_logo_height}" src="${site_logo}" width="${site_logo_width}" />
+				</a>
+
+				<#if show_site_name>
+					<span class="site-name" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
+						${site_name}
+					</span>
+				</#if>
+			</h1>
+		</div>
+
+		<#if !is_signed_in>
+			<a data-redirect="${is_login_redirect_required?string}" href="${sign_in_url}" id="sign-in" rel="nofollow">${sign_in_text}</a>
+		</#if>
+
+		<#if has_navigation && is_setup_complete>
+			<#include "${full_templates_path}/navigation.ftl" />
+		</#if>
 	</header>
 
 	<section id="content">
-	
+		<h1 class="hide-accessible">${the_title}</h1>
+
 		<#if selectable>
 			<@liferay_util["include"] page=content_include />
 		<#else>
@@ -52,7 +62,9 @@
 	</section>
 
 	<footer id="footer" role="contentinfo">
-
+		<p class="powered-by">
+			<@liferay.language key="powered-by" /> <a href="http://www.liferay.com" rel="external">Liferay</a>
+		</p>
 	</footer>
 </div>
 

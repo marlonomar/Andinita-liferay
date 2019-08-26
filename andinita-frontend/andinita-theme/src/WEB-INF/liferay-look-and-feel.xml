@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<!DOCTYPE look-and-feel PUBLIC "-//Liferay//DTD Look and Feel 7.2.0//EN" "http://www.liferay.com/dtd/liferay-look-and-feel_7_2_0.dtd">
+<!DOCTYPE look-and-feel PUBLIC "-//Liferay//DTD Look and Feel 7.1.0//EN" "http://www.liferay.com/dtd/liferay-look-and-feel_7_1_0.dtd">
 
 <look-and-feel>
 	<compatibility>
-		<version>7.2.0+</version>
+		<version>7.1.0+</version>
 	</compatibility>
-	<theme id="andinita" name="Andinita">
+	<theme id="andinita" name="andinita">
 		<template-extension>ftl</template-extension>
 		<portlet-decorator id="barebone" name="Barebone">
 			<portlet-decorator-css-class>portlet-barebone</portlet-decorator-css-class>
