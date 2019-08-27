@@ -55,7 +55,7 @@ function uploadPhotoProducto(req,res){
         let filename = fileSplit[1];
         let fileExtSplit = filename.split('\.');
         let fileExt = fileExtSplit[1].toLowerCase();
-        let ruta = url+'/productos/get-image/'+filename;
+        let ruta = url+'/productos/image/'+filename;
         
         Producto.findByIdAndUpdate(id,{image: ruta}, {new:true},(err,producto)=>{
             if(err) return error (res,err);

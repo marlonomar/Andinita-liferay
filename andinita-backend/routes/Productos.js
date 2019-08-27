@@ -5,7 +5,7 @@ const multipart = require('connect-multiparty');
 const multipartMiddelware = multipart({uploadDir:'./images'});
 
 api.get('/producto',productosControllers.getProductos);
-api.get('/get-image/:image',productosControllers.getImage);
+api.get('/image/:image',productosControllers.getImage);
 api.post('/new-producto',productosControllers.createProducto);
 api.post('/upload-file/:id',multipartMiddelware , productosControllers.uploadPhotoProducto);
 api.put('/edit-producto/:id',productosControllers.updateProducto);
