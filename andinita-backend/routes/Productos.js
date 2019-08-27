@@ -1,12 +1,15 @@
 const express = require('express');
 const api = express.Router();
-const PastelesControllers = require('../controllers/Productos');
+const productosControllers = require('../controllers/Productos');
+const multipart = require('connect-multiparty');
+const multipartMiddelware = multipart({uploadDir:'./images'});
 
-api.get('/producto',PastelesControllers.getProductos);
-api.post('/new-producto',PastelesControllers.createProducto);
-api.put('/edit-producto/:id',PastelesControllers.updateProducto);
-api.put('/available-producto/:id',PastelesControllers.availableProducto);
-api.delete('/unavailable-producto/:id',PastelesControllers.unavailableProducto);
+api.get('/producto',productosControllers.getProductos);
+api.post('/new-producto',productosControllers.createProducto);
+api.post('/upload-file/:id',multipartMiddelware , productosControllers.uploadPhotoProducto);
+api.put('/edit-producto/:id',productosControllers.updateProducto);
+api.put('/available-producto/:id',productosControllers.availableProducto);
+api.delete('/unavailable-producto/:id',productosControllers.unavailableProducto);
 
 
 module.exports = api;

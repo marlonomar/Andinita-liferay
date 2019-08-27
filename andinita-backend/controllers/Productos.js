@@ -1,5 +1,6 @@
-const connectMultipart = require('connect-multiparty');
+
 let Producto = require('../models/Productos');
+const fs = require('fs');
 
 function error (res,err){
     res.status(500).send({mensaje: 'error en la peticion' , error : err});
@@ -42,7 +43,49 @@ function createProducto (req,res){
 }
 
 function uploadPhotoProducto(req,res){
+    let id = req.params.id;
+    let nameFile = "no se subio la imagen";
 
+    if(req.files){
+
+        let filePath = req.files.image.path;
+        let fileSplit = filePath.split('\\');
+        let filename = fileSplit[1];
+        let fileExtSplit = filename.split('\.');
+        let fileExt = fileExtSplit[1].toLowerCase();
+        
+        Producto.findByIdAndUpdate(id,{image: filename}, {new:true},(err,producto)=>{
+            if(err) return error (res,err);
+
+            if(!producto) return res.status(404).send({success: false , mensaje :'producto no encontrado'});
+
+            if(fileExt == 'jpg' || fileExt == 'png'||  fileExt == 'jpeg' || fileExt == 'gif' ){
+
+                return res.status(200).send({
+                    success: true,
+                    producto
+                });
+
+            }
+            
+            else{
+
+                fs.unlink(filePath,(err)=>{
+                    return res.status(401).send({
+                        success: false,
+                        mensaje : 'formato invalido'
+                    })
+                })
+                
+            }
+        });
+    }
+    else{
+        return res.status(500).send({
+            success: false,
+            files : nameFile
+        })
+    }
 }
 
 function updateProducto(req,res){
@@ -102,5 +145,6 @@ module.exports ={
     createProducto,
     updateProducto,
     unavailableProducto,
-    availableProducto
+    availableProducto,
+    uploadPhotoProducto
 }

@@ -24,6 +24,10 @@ let Producto = new Shema({
     typeProduct:{
         type:String,
         required:[true,'the type of the product is required']
+    },
+    image:{
+        type: String,
+        default: null
     }
 });
 
