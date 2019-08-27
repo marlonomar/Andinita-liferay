@@ -1,6 +1,8 @@
 
 let Producto = require('../models/Productos');
 const fs = require('fs');
+const url = require('../config/url');
+const path = require('path');
 
 function error (res,err){
     res.status(500).send({mensaje: 'error en la peticion' , error : err});
@@ -53,8 +55,9 @@ function uploadPhotoProducto(req,res){
         let filename = fileSplit[1];
         let fileExtSplit = filename.split('\.');
         let fileExt = fileExtSplit[1].toLowerCase();
+        let ruta = url+'/productos/get-image/'+filename;
         
-        Producto.findByIdAndUpdate(id,{image: filename}, {new:true},(err,producto)=>{
+        Producto.findByIdAndUpdate(id,{image: ruta}, {new:true},(err,producto)=>{
             if(err) return error (res,err);
 
             if(!producto) return res.status(404).send({success: false , mensaje :'producto no encontrado'});
@@ -140,11 +143,29 @@ function availableProducto(req,res){
     });
 }
 
+function getImage(req,res){
+
+    let file = req.params.image;
+    let path_file = './images/'+file;
+    
+    fs.exists(path_file, (exists)=>{
+        if(exists){
+            return res.sendFile(path.resolve(path_file));
+        }else{
+            return res.status(500).send({
+                success: false,
+                mensaje : 'imagen no econtrada'
+            })
+        }
+    })
+}
+
 module.exports ={
     getProductos,
     createProducto,
     updateProducto,
     unavailableProducto,
     availableProducto,
-    uploadPhotoProducto
+    uploadPhotoProducto,
+    getImage
 }
