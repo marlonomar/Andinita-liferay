@@ -21,9 +21,6 @@
 <@liferay.control_menu />
 
 <div class="container-fluid" id="wrapper">
-	<header id="banner" role="banner">
-		
-	</header>
 
 	<section id="content">
 	
@@ -41,9 +38,6 @@
 		</#if>
 	</section>
 
-	<footer id="footer" role="contentinfo">
-		
-	</footer>
 </div>
 
 <@liferay_util["include"] page=body_bottom_include />

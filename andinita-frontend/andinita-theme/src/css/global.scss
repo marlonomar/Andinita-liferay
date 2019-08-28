@@ -2,10 +2,41 @@
 
 body{
     background: #e0e0e0;
+
+    .row{
+        margin-right:0px !important;
+    }
     .portlet-title-text{
         display: none;
     }
     .portlet-decorate .portlet-content{
         background: transparent;
+    }
+
+    #column-1{
+        padding: 0px !important;
+    }
+    .portlet-content{
+        padding: 0px !important;
+    }
+    .container-fluid .cabezera{
+        padding: 0px !important;
+    }
+    
+    .container-fluid .cabezera .col-md-12{
+        padding: 0px !important;
+    }
+    #wrapper{
+        padding: 0px !important;
+        margin :0px !important;
+    }
+
+    section{
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+
+    #portlet_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_CzkFMJTQY0xw > div > div.autofit-float.autofit-row.portlet-header{
+        margin: 0px !important;
     }
 }
