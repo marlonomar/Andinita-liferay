@@ -1,7 +1,5 @@
 
-
-<script id="cabezera" type="text/html">
- <div class="container">
+ <div class="container-fluid cabezera" style="background: url(${background.getData()})">
         <div class="row">
             <div class="col-md-12">
                 <div class="entrar">
@@ -25,11 +23,22 @@
             </div>
         </div>
     </div>
-</script>
-
 
 <style>
 
+#column-1{
+    padding: 0px !important;
+}
+.portlet-content{
+    padding: 0px !important;
+}
+.container-fluid .cabezera{
+    padding: 0px !important;
+}
+
+.container-fluid .cabezera .col-md-12{
+    padding: 0px !important;
+}
 #wrapper{
     padding: 0px !important;
     margin :0px !important;
@@ -61,6 +70,8 @@
     margin-top: 22px;
     cursor: pointer;
     border-radius: 16px;
+    position: relative;
+    left: -40px;
 }
 
 .entrar button:hover{
@@ -68,13 +79,15 @@
     font-size: 20px;
 }
 
-header{
+.cabezera{
     width: 100%;
     height:500px;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-position: center !important;
     box-shadow: 0px 0px 15px #000;
+    position: relative;
+    top: -17px;
 }
 .logo img{
     width: 400px;
@@ -84,11 +97,3 @@ header{
 }
 </style>
 
-<script>
-
-$(document).ready(function(){
-    let cabezera = $("#cabezera").html();
-    $("header").css({"background":"url(${background.getData()})"}).append(cabezera)
-})
-
-</script>
