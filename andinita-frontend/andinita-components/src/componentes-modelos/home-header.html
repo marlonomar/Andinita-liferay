@@ -2,7 +2,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="entrar">
-                    <a href="${butonEntrar.getFriendlyUrl()}" class="boton"> entrar </a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle boton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Entrar
+                        </button>
+                            <div class="dropdown-menu login" aria-labelledby="dropdownMenuButton">
+                                <h4>Login</h4>
+                                    <span class="icon"><img src="${iconoUser.getData()}" alt=""></span><input type="text" placeholder="Email" id="email" class="form-control">
+                                    <span class="icon"><img src="${iconoLlave.getData()}" alt=""></span><input type="password" placeholder="clave" id="password" class="form-control">
+                                    <button class="btn btn-primary" id="login">Entrar</button>
+                                <a href="${butonEntrar.getFriendlyUrl()}" class="registrar">Registrate</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -84,4 +95,46 @@
     margin-top: -68px;
     margin-left: 80px;
 }
+
+.entrar .login{
+    background: rgba(255, 255, 255, 0.7);
+    padding: 22px;
+    border: none;
+}
+.login h4{
+    text-align: center;
+}
+.login input{
+    margin-bottom: 10px;
+}
+.login .icon img{
+    width: 30px;
+    display: inline;
+    margin-bottom: 5px;
+}
+
+.login #login{
+    margin-right: 10px;
+}
 </style>
+
+<script>
+    $("#login").click(function(){
+        let email = $("#email").val();
+        let password = $("#password").val();
+        $.ajax({
+            url:"http://localhost:3000/Users/login",
+            type:"POST",
+            dataType:"JSON",
+            contentType :'application/json',
+            data:{
+                email : email,
+                password : password,
+                token: true
+            },
+            success: function(data){
+                console.log(data)
+            }
+        })
+    })
+</script>
