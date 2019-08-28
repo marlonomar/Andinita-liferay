@@ -8,7 +8,10 @@
                     <div class="items">
                         <div class="row">
                             <div class="col-md-12">
-                                <input type="text" placeholder="Buscar Producto" class="form-control"> <button class="btn btn-success" id="buscar">Buscar</button>
+                                <input type="text" placeholder="Buscar Producto" class="form-control"> <button class="btn btn-primary" id="buscar">Buscar</button>
+                                <div class="carrito btn btn-success">
+                                    <img src="${carritoIcono.getData()}" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,6 +39,14 @@
             display: table;
             margin: auto;
             height: auto;
+        }
+        .items .carrito{
+            display: inline-block;
+            position: relative;
+            float: right;
+        }
+        .items .carrito img{
+            width: 35px;
         }
 
         .items input{
@@ -81,33 +92,54 @@
                 <div class="descripcion">
                     <h4>Precio : R$ {PRECIO}</h4>
                     <p>{DESCRIPCION}</p>
-                    <button class="btn btn-primary">Comprar</button>
+                    <button class="btn btn-primary" id="comprar" item="{ID}">Comprar</button>
                 </div>
             </div>
     </script>
     
     <script>
-           let item = $("#itemProducto").clone().html();
-           
-            $.ajax({
-                url:"http://localhost:3000/productos/producto",
-                type:"GET",
-                dataType:"JSON",
-                success:function(data){
-                    let productos = data.producto;
-                   
-                    for (let i = 0; i < productos.length; i++) {
-                        let product = item;
-                        product = product.replace(/{TITULO}/,productos[i].title)
-                                   .replace(/{PRECIO}/,productos[i].price)
-                                   .replace(/{DESCRIPCION}/,productos[i].description)
-                                   .replace(/{FOTO}/,productos[i].image)
+          showProducts();
 
-                        $(".items").append(product);
+          function showProducts(){
+                let item = $("#itemProducto").clone().html();
+           
+                $.ajax({
+                    url:"http://localhost:3000/productos/producto",
+                    type:"GET",
+                    dataType:"JSON",
+                    success:function(data){
+                        let productos = data.producto;
+                        
+                        for (let i = 0; i < productos.length; i++) {
+                            let product = item;
+                            product = product.replace(/{TITULO}/,productos[i].title)
+                                        .replace(/{PRECIO}/,productos[i].price)
+                                        .replace(/{DESCRIPCION}/,productos[i].description)
+                                        .replace(/{FOTO}/,productos[i].image)
+                                        .replace(/{ID}/,productos[i]._id)
+
+                            $(".items").append(product);
+                        }
+                        buyItem();
                     }
-                }
-            })
-    
-    
-    
+                })
+
+                
+            }
+
+         
+
+            function buyItem(){
+                $(".item button").click(function(){
+                    let item = $(this).attr("item");
+                    $.ajax({
+                        url:"http://localhost:3000/productos/get-producto/"+item,
+                        type:"GET",
+                        dataType:"JSON",
+                        success:function(data){
+                            console.log(data.producto)
+                        }
+                    })
+                })
+            }
     </script>

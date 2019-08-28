@@ -1,3 +1,11 @@
-.portlet-title-text{
-    display: none;
+
+
+body{
+    background: #e0e0e0;
+    .portlet-title-text{
+        display: none;
+    }
+    .portlet-decorate .portlet-content{
+        background: transparent;
+    }
 }
