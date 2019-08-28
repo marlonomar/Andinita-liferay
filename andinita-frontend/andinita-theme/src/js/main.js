@@ -29,6 +29,9 @@ Liferay.on(
 
 	function() {
 		
+		$("body").dblclick(function(){
+			$("#ControlMenu").toggle()
+		})
 	}
 );
 
