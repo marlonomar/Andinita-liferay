@@ -13,18 +13,31 @@ let User = new Shema({
         type:String,
         required:[true,'the surname is required']
     },
+    nickname:{
+        type:String,
+        unique:true,
+        required:[true,'the nickname is required']
+    },
     email:{
         type:String,
-        required:[true,'the email is required'],
         unique: true,
+        required:[true,'the emial is required']
     },
     password:{
         type:String,
         required:[true,'the password is required']
     },
-    avatar:{
+    role:{
         type:String,
-        default :null
+        default : 'user'
+    },
+    image:{
+        type:String,
+        default:null
+    },
+    active:{
+        type: Boolean,
+        default: true
     },
     phone:{
         type:String,

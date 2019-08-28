@@ -20,9 +20,13 @@ app.use((req, res, next) => {
 
 //ROUTES
 let producto =require('./routes/Productos');
+let users = require('./routes/User');
 
 //RUTAS
-app.use('/productos',producto)
+app.use('/productos',producto);
+app.use('/Users',users);
+
+//Canal del servidor
 app.listen(3000,()=>{
     console.log('server http://localhost:3000');
 })
