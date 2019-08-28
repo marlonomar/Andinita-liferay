@@ -1,0 +1,31 @@
+
+<div class="publicidad">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <h3>${titulo.getData()}</h3>
+                <p>${mensaje.getData()}</p>
+            </div>
+            <div class="col-md-5">
+                <div class="foto">
+                    <#if foto.getData()?? && foto.getData() != "">
+                        <img alt="${foto.getAttribute("alt")}" data-fileentryid="${foto.getAttribute("fileEntryId")}" src="${foto.getData()}" />
+                    </#if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .publicidad h3{
+        padding: 20px 37px;
+        font-size: 67px;
+    }
+    .publicidad p{
+        margin-left: 39px;
+        font-size: 24px;
+        color: gray;
+    }
+</style>

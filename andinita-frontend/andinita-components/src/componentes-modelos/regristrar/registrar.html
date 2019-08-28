@@ -1,0 +1,79 @@
+<div class="login" style="background: url(${fondo.getData()})">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logo">
+                    <#if logo.getData()?? && logo.getData() != "">
+                        <img alt="${logo.getAttribute("alt")}" data-fileentryid="${logo.getAttribute("fileEntryId")}" src="${logo.getData()}" />
+                    </#if>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1>${titulo.getData()}</h1>
+                <h2>${subTitulo.getData()}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <div class="formulario">
+                    <input type="text" placeholder="Ingrese su nombre" class="form-control" id="nombre">
+                    <input type="text" placeholder="Ingrese su apellido" class="form-control" id="apellido">
+                    <input type="text" placeholder="Ingrese su nombre de usuario" class="form-control" id="nickname">
+                    <input type="email" placeholder="Ingrese su email" class="form-control" id="email">
+                    <input type="password" placeholder="Ingrese su clave" class="form-control" id="password">
+                    <input type="text" placeholder="Ingrese su telefono" class="form-control" id="phone">
+               </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" id="enviar">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    div .login{
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+    }
+
+    .logo img{
+        width: 235px;
+        padding: 11px;
+    }
+
+    .login h1{
+        color: #741212;
+        font-size: 60px;
+        text-align: center;
+    }
+
+    .login h2{
+        text-align: center;
+        color: red;
+    }
+    .formulario{
+        width: 80%;
+        display: table;
+        margin: auto;
+    }
+
+    .formulario input{
+        width: 373px;
+        display: inline-block;
+        float: left;
+        overflow: hidden;
+        margin: 20px 10px;
+        height: 58px;
+    }
+</style>
+
+
+<script>
+    $(".login").css({"height":window.outerHeight+'px'})
+</script>
