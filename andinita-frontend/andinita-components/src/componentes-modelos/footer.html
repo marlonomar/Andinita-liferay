@@ -1,0 +1,52 @@
+<footer>
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="logoFooter">
+                    <#if logo.getData()?? && logo.getData() != "">
+                        <img alt="${logo.getAttribute("alt")}" data-fileentryid="${logo.getAttribute("fileEntryId")}" src="${logo.getData()}" />
+                    </#if>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="terminos">
+                    <p>${TerminosLegales.getData()}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sociales">
+                    <#if redSocial.getSiblings()?has_content>
+                        <#list redSocial.getSiblings() as red>
+                            <div class="iconoSocial">
+                                <a href="${red.Link.getData()}">
+                                    <img alt="${red.Nombre.getData()}" src="${red.icono.getData()}" />
+                                </a>
+                            </div>
+                        </#list>
+                    </#if>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</footer>
+
+
+<style>
+    .logoFooter{
+        width: 138px;
+        display: table;
+        margin: auto;
+    }
+
+    .iconoSocial{
+        width: 50px;
+        margin-left: 20px;
+        display: inline-block;
+        float: left;
+        overflow: hidden;
+        margin-top: 17px;
+    }
+</style>
+
