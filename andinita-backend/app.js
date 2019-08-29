@@ -27,7 +27,9 @@ app.use('/productos',producto);
 app.use('/Users',users);
 
 //Canal del servidor
-app.listen(3000,()=>{
+
+var server = process.env.PORT || 3000;
+app.listen(server,()=>{
     console.log('server http://localhost:3000');
 })
 
