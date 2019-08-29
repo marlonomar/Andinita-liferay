@@ -58,22 +58,72 @@
         color: red;
     }
     .formulario{
-        width: 80%;
+        width: 43%;
         display: table;
         margin: auto;
     }
 
     .formulario input{
-        width: 373px;
         display: inline-block;
         float: left;
         overflow: hidden;
-        margin: 20px 10px;
+        margin:6px 10px;
         height: 58px;
+    }
+
+    #nombre , #apellido{
+        width: 45%;
+    }
+    #nickname{
+        width: 30%;
+    }
+    #email{
+        width: 61%;
+    }
+    #password{
+        width: 46%;
+    }
+    #phone{
+        width: 45%;
+    }
+    #enviar{
+        display: table;
+        margin: auto;
+        width: 20%;
+        margin-top:20px;
     }
 </style>
 
 
 <script>
     $(".login").css({"height":window.outerHeight+'px'})
+
+  
+      $("#enviar").click(function(){
+        let nombre = $("#nombre").val();
+        let apellido = $("#apellido").val();
+        let nickname = $("#nickname").val();
+        let email = $("#email").val();
+        let password = $("#password").val();
+        let phone = $("#phone").val();
+
+        var settings = {
+                "url": "https://andinita-serse.herokuapp.com/Users/create-user",
+                "method": "POST",
+                "data": {
+                    "name": nombre,
+                    "surname": apellido,
+                    "nickname": nickname,
+                    "email": email,
+                    "password": password,
+                    "phone": phone
+                }
+            }
+
+            $.ajax(settings).done(function (response) {
+                window.open('http://localhost:8080/web/guest');
+            });
+   
+    });
+    
 </script>
