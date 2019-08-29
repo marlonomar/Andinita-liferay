@@ -29,7 +29,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-primary" id="enviar">Registrar</button>
+                <button class="btn btn-danger" id="enviar">Registrar</button>
             </div>
         </div>
     </div>
@@ -61,6 +61,9 @@
         width: 43%;
         display: table;
         margin: auto;
+        background: white;
+        padding: 22px;
+        border-radius: 14px;
     }
 
     .formulario input{
@@ -69,22 +72,7 @@
         overflow: hidden;
         margin:6px 10px;
         height: 58px;
-    }
-
-    #nombre , #apellido{
-        width: 45%;
-    }
-    #nickname{
-        width: 30%;
-    }
-    #email{
-        width: 61%;
-    }
-    #password{
-        width: 46%;
-    }
-    #phone{
-        width: 45%;
+        width: 95%;
     }
     #enviar{
         display: table;
@@ -96,9 +84,7 @@
 
 
 <script>
-    $(".login").css({"height":window.outerHeight+'px'})
-
-  
+    
       $("#enviar").click(function(){
         let nombre = $("#nombre").val();
         let apellido = $("#apellido").val();
@@ -121,9 +107,8 @@
             }
 
             $.ajax(settings).done(function (response) {
-                window.open('http://localhost:8080/web/guest');
+                window.location.replace('${linkEntrar.getFriendlyUrl()}');
             });
    
-    });
-    
+    });    
 </script>

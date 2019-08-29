@@ -138,7 +138,7 @@
         $.ajax(settings).done(function (response) {
             if(response){
                 localStorage.setItem('token',response.token);
-                window.open('https://www.ifood.com.br');
+                window.location.replace('https://www.ifood.com.br');
             }else{
                 console.log('Usuario o clave invalidos')
             }
