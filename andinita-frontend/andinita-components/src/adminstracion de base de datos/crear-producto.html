@@ -1,0 +1,49 @@
+<div class="crearProducto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titulo">
+                    <h1>${Titulo.getData()}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="formulario">
+                    <input type="text" placeholder="Titulo" class="form-control" id="titulo">
+                    <input type="text" placeholder="Descripcion" class="form-control" id="descripcion">
+                    <input type="number" placeholder="Precio" class="form-control" id="precio">
+                    <input type="text" placeholder="Tipo de Producto" class="form-control" id="tipo">
+                    <input type="file">
+                    <button class="btn btn-danger" id="enviar">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#enviar").click(function(){
+        
+        let titulo = $("#titulo").val();
+        let descripcion = $("#descripcion").val();
+        let precio = $("#precio").val();
+        let tipo = $("#tipo").val();
+
+        var settings = {
+            "url": "https://andinita-serse.herokuapp.com/productos/new-producto",
+            "method": "POST",
+            "data": {
+                    "title": titulo,
+                    "description": descripcion,
+                    "price": precio,
+                    "typeProduct": tipo
+                }
+            }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    })
+
+</script>

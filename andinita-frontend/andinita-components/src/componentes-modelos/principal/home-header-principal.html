@@ -1,0 +1,107 @@
+
+<div class="navegador">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="logo">
+                    <img src="${logo.getData()}"/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="buscador">
+                    <input type="text" placeholder="${mensajeDelBuscador.getData()}" id="buscar" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="localizacion">
+                    <h3>Entregar en</h3>
+                    <br>
+                    <img src="${iconoLocalizacion.getData()}" /><p>{{LOCALIZACION}}</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="menu">
+                    <div class="dropdown perfil">
+                       
+                        <button class="btn btn-secondary dropdown-toggle boton" type="button" id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="${iconoPerfil.getData()}" />
+                            Perfil
+                        </button>
+                        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                           
+                        </div>
+                    </div>
+                    <div class="dropdown Carrito">
+                        
+                        <button class="btn btn-secondary dropdown-toggle boton" type="button" id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="${iconoCarritoDeCompras.getData()}" />    
+                            Carrito
+                        </button>
+                        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                            <div class="vacio">
+                                <p>el carrito esta vacio</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .navegador{
+        width: 100%;
+        height: 81px;
+        position: fixed;
+        border: 1px solid #c6c6c6;
+    }
+
+    .logo img{
+        width: 133px;
+        padding: 10px;
+    }
+    .buscador{
+        padding: 21px;
+    }
+    .localizacion h3{
+        margin: 0px;
+        margin-bottom: -21px;
+        font-size: 20px;
+        margin-top: 13px
+    }
+    .localizacion img{
+        display: inline-block;
+        width: 15px;
+    }
+    .localizacion p{
+        width: 46%;
+        display: inline-block;
+        margin-left: 9px
+    }
+    .menu img{
+        width: 21px;
+    }
+    .menu button{
+        background: transparent;
+        color: gray;
+        border: none;
+        width: 121px;
+        height: 49px;
+        display: inline-block;
+        float: left;
+    }
+
+    .dropdown{
+    display: inline-block;
+    margin: 13px
+    }
+    .dropdown-menu{
+        padding: 15px;
+        left: -19px !important;
+    }
+    .vacio p{
+        text-align: center;
+    }
+</style>
