@@ -104,7 +104,7 @@
                 let item = $("#itemProducto").clone().html();
            
                 $.ajax({
-                    url:"http://localhost:3000/productos/producto",
+                    url:"https://andinita-serse.herokuapp.com/productos/producto",
                     type:"GET",
                     dataType:"JSON",
                     success:function(data){
@@ -133,7 +133,7 @@
                 $(".item button").click(function(){
                     let item = $(this).attr("item");
                     $.ajax({
-                        url:"http://localhost:3000/productos/get-producto/"+item,
+                        url:"https://andinita-serse.herokuapp.com/productos/get-producto/"+item,
                         type:"GET",
                         dataType:"JSON",
                         success:function(data){

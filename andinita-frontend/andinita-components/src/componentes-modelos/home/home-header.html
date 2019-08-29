@@ -122,19 +122,27 @@
     $("#login").click(function(){
         let email = $("#email").val();
         let password = $("#password").val();
-        $.ajax({
-            url:"http://localhost:3000/Users/login",
-            type:"POST",
-            dataType:"JSON",
-            contentType :'application/json',
-            data:{
-                email : email,
-                password : password,
-                token: true
-            },
-            success: function(data){
-                console.log(data)
+
+        var settings = {
+
+        "url": "https://andinita-serse.herokuapp.com/Users/login",
+        "method": "POST",
+        "Content-Type": "application/json",
+        "data": {
+        "email": email,
+        "password": password,
+        "token": "true"
+        }
+        }
+
+        $.ajax(settings).done(function (response) {
+            if(response){
+                console.log(response);
+                alert("puedes entrar")
+            }else{
+                console.log('Usuario o clave invalidos')
             }
-        })
+        
+        });
     })
 </script>
