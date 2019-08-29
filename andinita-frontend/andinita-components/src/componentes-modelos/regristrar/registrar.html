@@ -3,9 +3,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="logo">
+                   <a href="${linkEntrar.getFriendlyUrl()}">
                     <#if logo.getData()?? && logo.getData() != "">
                         <img alt="${logo.getAttribute("alt")}" data-fileentryid="${logo.getAttribute("fileEntryId")}" src="${logo.getData()}" />
                     </#if>
+                   </a>
                 </div>
             </div>
         </div>
@@ -18,12 +20,12 @@
         <div class="row">
             <div class="col-md-12">
                <div class="formulario">
-                    <input type="text" placeholder="Ingrese su nombre" class="form-control" id="nombre">
-                    <input type="text" placeholder="Ingrese su apellido" class="form-control" id="apellido">
-                    <input type="text" placeholder="Ingrese su nombre de usuario" class="form-control" id="nickname">
-                    <input type="email" placeholder="Ingrese su email" class="form-control" id="email">
-                    <input type="password" placeholder="Ingrese su clave" class="form-control" id="password">
-                    <input type="text" placeholder="Ingrese su telefono" class="form-control" id="phone">
+                    <input type="text" placeholder="Nombre" class="form-control" id="nombre">
+                    <input type="text" placeholder="Apellido" class="form-control" id="apellido">
+                    <input type="text" placeholder="Nickname" class="form-control" id="nickname">
+                    <input type="email" placeholder="usuario@test.com" class="form-control" id="email">
+                    <input type="password" placeholder="Contraseña" class="form-control" id="password">
+                    <input type="text" placeholder="(81)999999999" class="form-control" id="phone">
                </div>
             </div>
         </div>
@@ -40,6 +42,7 @@
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
+        height:100%;
     }
 
     .logo img{
@@ -64,6 +67,7 @@
         background: white;
         padding: 22px;
         border-radius: 14px;
+        box-shadow: 0px 0px 15px;
     }
 
     .formulario input{
@@ -78,7 +82,8 @@
         display: table;
         margin: auto;
         width: 20%;
-        margin-top:20px;
+        margin-top:15px;
+        margin-bottom: 20px;
     }
 </style>
 
@@ -109,6 +114,5 @@
             $.ajax(settings).done(function (response) {
                 window.location.replace('${linkEntrar.getFriendlyUrl()}');
             });
-   
     });    
 </script>
