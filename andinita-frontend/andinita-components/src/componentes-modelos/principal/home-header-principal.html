@@ -28,7 +28,7 @@
                             Perfil
                         </button>
                         <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                           <a href="" id="salir">Salir</a>
+                           <p id="salir">Salir</p>
                         </div>
                     </div>
                     <div class="dropdown Carrito">
@@ -54,7 +54,6 @@
     .navegador{
         width: 100%;
         height: 81px;
-        position: fixed;
         border: 1px solid #c6c6c6;
     }
 
@@ -104,5 +103,29 @@
     .vacio p{
         text-align: center;
     }
+
+    .perfil .dropdown-menu p{
+        cursor: pointer;
+    }
+
+    .perfil .dropdown-menu p:hover{
+        background: #c6c6c6;
+    }
+
 </style>
 
+<script>
+
+$(document).ready(function(){
+    salir();
+
+    function salir(){
+        $("#salir").click(function(){
+            localStorage.clear();
+            window.location.replace("${salir.getFriendlyUrl()}")
+        })
+    }
+
+})
+
+</script>
