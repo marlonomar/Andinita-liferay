@@ -1,0 +1,87 @@
+
+.cabezera{
+
+    width: 100%;
+    height:500px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    box-shadow: 0px 0px 15px #000;
+    position: relative;
+    top: -17px;
+
+    .titulo{
+        h1{
+            font-size: 70px;
+            font-weight: bold;
+            color: white;
+        }
+        h2{
+            font-size: 35px;
+            font-weight: bold;
+            color:red;
+        }
+        h1,h2{
+            text-align: center;
+        }
+    }
+
+    .entrar{
+
+        .boton{
+            height: 56px;
+            display: inline-block;
+            float: right;
+            width: 240px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            margin-top: 22px;
+            cursor: pointer;
+            border-radius: 16px;
+            position: relative;
+            left: -40px;
+            text-align: center;
+            font-size: 25px;
+            border: 3px solid #c6c6c6;
+
+            &:hover{
+                background: rgba(243, 241, 241, 0.233);
+                font-size: 28px;
+            }
+        }
+
+        .login{
+            background: rgba(255, 255, 255, 0.7);
+            padding: 22px;
+            border: none;
+            h4{
+                text-align: center;
+            }
+            input{
+                margin-bottom: 10px;
+            }
+            .icon{
+                img{
+                    width: 30px;
+                    display: inline;
+                    margin-bottom: 5px;
+                }
+            }
+            #login{
+                margin-right: 10px;
+            }
+        }
+
+    }
+
+    .logo{
+        margin-top: -68px;
+        margin-left: 80px;
+        img{
+            width: 400px;
+            position: relative;
+            left: 366px;
+            top: 13px;
+        }
+    }
+}

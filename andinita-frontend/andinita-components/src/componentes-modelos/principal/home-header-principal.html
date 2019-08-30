@@ -1,46 +1,52 @@
 
 <div class="navegador">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="logo">
-                    <img src="${logo.getData()}"/>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="buscador">
-                    <input type="text" placeholder="${mensajeDelBuscador.getData()}" id="buscar" class="form-control">
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="localizacion">
-                    <h3>Entregar en</h3>
-                    <br>
-                    <img src="${iconoLocalizacion.getData()}" /><p>{{LOCALIZACION}}</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="menu">
-                    <div class="dropdown perfil">
-                       
-                        <button class="btn btn-secondary dropdown-toggle boton" type="button" id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="${iconoPerfil.getData()}" />
-                            Perfil
-                        </button>
-                        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                           <p id="salir">Salir</p>
-                        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="logo">
+                        <img src="${logo.getData()}"/>
                     </div>
-                    <div class="dropdown Carrito">
-                        
-                        <button class="btn btn-secondary dropdown-toggle boton" type="button" id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="${iconoCarritoDeCompras.getData()}" />    
-                            Carrito
-                        </button>
-                        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                            <div class="vacio">
-                                <p>el carrito esta vacio</p>
-                                
+                </div>
+                <div class="col-md-4">
+                    <div class="buscador">
+                        <input type="text" placeholder="${mensajeDelBuscador.getData()}" id="buscar" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="localizacion">
+                        <h3>Entregar en</h3>
+                        <br>
+                        <img src="${iconoLocalizacion.getData()}" /><p>{{LOCALIZACION}}</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="menu">
+                        <div class="dropdown perfil">
+                           
+                            <button class="btn btn-secondary dropdown-toggle boton" type="button" id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="${iconoPerfil.getData()}" />
+                                Perfil
+                            </button>
+                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                               <ul>
+                                    <li id="Pedidos"> <i class="fas fa-shopping-bag"></i> Pedidos</li>
+                                    <li id="Ayuda"> <i class="fas fa-info"></i>Ayuda</li>
+                                    <li id="EditarDatos"><i class="fas fa-user-edit"></i>Editar datos</li>
+                                    <li id="salir"><i class="fas fa-sign-out-alt"></i>Salir</li>
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown Carrito">
+                            
+                            <button class="btn btn-secondary dropdown-toggle boton" type="button" id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="${iconoCarritoDeCompras.getData()}" />    
+                                Carrito
+                            </button>
+                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                <div class="vacio">
+                                    <p>el carrito esta vacio</p>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -48,84 +54,113 @@
             </div>
         </div>
     </div>
-</div>
-
-<style>
-    .navegador{
-        width: 100%;
-        height: 81px;
-        border: 1px solid #c6c6c6;
-    }
-
-    .logo img{
-        width: 133px;
-        padding: 10px;
-    }
-    .buscador{
-        padding: 21px;
-    }
-    .localizacion h3{
-        margin: 0px;
-        margin-bottom: -21px;
-        font-size: 20px;
-        margin-top: 13px
-    }
-    .localizacion img{
+    
+    <style>
+        .navegador{
+            width: 100%;
+            height: 81px;
+            border: 1px solid #c6c6c6;
+        }
+    
+        .logo img{
+            width: 133px;
+            padding: 10px;
+        }
+        .buscador{
+            padding: 21px;
+        }
+        .localizacion h3{
+            margin: 0px;
+            margin-bottom: -21px;
+            font-size: 20px;
+            margin-top: 13px
+        }
+        .localizacion img{
+            display: inline-block;
+            width: 15px;
+        }
+        .localizacion p{
+            width: 46%;
+            display: inline-block;
+            margin-left: 9px
+        }
+        .menu img{
+            width: 21px;
+        }
+        .menu button{
+            background: transparent;
+            color: gray;
+            border: none;
+            width: 121px;
+            height: 49px;
+            display: inline-block;
+            float: left;
+        }
+    
+        .dropdown{
         display: inline-block;
-        width: 15px;
-    }
-    .localizacion p{
-        width: 46%;
-        display: inline-block;
-        margin-left: 9px
-    }
-    .menu img{
-        width: 21px;
-    }
-    .menu button{
-        background: transparent;
-        color: gray;
-        border: none;
-        width: 121px;
-        height: 49px;
-        display: inline-block;
-        float: left;
-    }
+        margin: 13px
+        }
+        .dropdown-menu{
+            padding: 15px;
+            left: -19px !important;
+        }
+        .vacio p{
+            text-align: center;
+        }
+    
+        .perfil .dropdown-menu ul{
+            list-style: none;
+            text-decoration: none;
+            padding: 0px;
+        }
 
-    .dropdown{
-    display: inline-block;
-    margin: 13px
-    }
-    .dropdown-menu{
-        padding: 15px;
-        left: -19px !important;
-    }
-    .vacio p{
-        text-align: center;
-    }
+        .perfil .dropdown-menu ul h3{
+            font-size: 18px;
+        }
+    
+        .perfil .dropdown-menu ul li{
+            cursor: pointer;
+            margin-bottom: 7px;
+        }
+        .perfil .dropdown-menu ul li i {
+            margin-right: 4px;
+        }
 
-    .perfil .dropdown-menu p{
-        cursor: pointer;
-    }
-
-    .perfil .dropdown-menu p:hover{
-        background: #c6c6c6;
-    }
-
-</style>
-
-<script>
-
-$(document).ready(function(){
-    salir();
-
-    function salir(){
-        $("#salir").click(function(){
-            localStorage.clear();
-            window.location.replace("${salir.getFriendlyUrl()}")
-        })
-    }
-
-})
-
-</script>
+        .perfil .dropdown-menu ul li:hover{
+            color: red;
+        }
+    
+    </style>
+    
+    <script>
+    
+    $(document).ready(function(){
+        salir();
+        user();
+    
+        function user(){
+            var token = localStorage.getItem('token');
+            var settings = {
+            "url": "https://andinita-serse.herokuapp.com/Users/user",
+            "method": "GET",
+            "headers": {
+                "autorization":token,
+             
+                }
+            }
+            $.ajax(settings).done(function (response) {
+                $(".perfil .dropdown-menu ul").prepend("<h3>hola "+response.user[0].name+"<h3>");
+            });
+        }
+    
+        function salir(){
+            $("#salir").click(function(){
+                localStorage.clear();
+                window.location.replace("${salir.getFriendlyUrl()}")
+            })
+        }
+    
+    })
+    
+    </script>
