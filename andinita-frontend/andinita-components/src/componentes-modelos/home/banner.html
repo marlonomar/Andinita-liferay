@@ -1,11 +1,7 @@
-
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="banner">
+            <div class="banner" style="background:${colorDeFondo.getData()}">
                <div class="row">
                    <div class="col-md-8">
                         <h3>${Titulo.getData()}</h3>
@@ -13,63 +9,10 @@
                         <button>${boton.getData()}</button>
                    </div>
                    <div class="col-md-4">
-                        <img alt="${foto.getAttribute("alt")}" data-fileentryid="${foto.getAttribute("fileEntryId")}" src="${foto.getData()}" />
+                        <img src="${foto.getData()}" />
                    </div>
                </div> 
             </div>
         </div>
     </div>
 </div>
-
-<style>
-    .banner{
-        background:${colorDeFondo.getData()};
-        
-    }
-
-    .banner{
-        position: relative;
-        top: -117px;
-        border-radius: 47px;
-        height: 323px;
-        margin-bottom: -93px;
-    }
-
-    .banner img{
-        width: 227px;
-        display: inline-block;
-        float: right;
-        position: relative;
-        top: 51px;
-        left: -33px
-    }
-
-    .banner h3{
-        color: white;
-        font-size: 57px;
-    }
-
-    .banner p{
-        color: white;
-        font-size: 22px;
-    }
-
-    .banner .col-md-8{
-        padding: 51px;
-    }
-
-    .banner button{
-        width: 236px;
-        background: transparent;
-        color: white;
-        font-size: 25px;
-        border-radius: 11px;
-        cursor: pointer;
-        margin-left: 42px;
-    }
-
-    .banner button:hover{
-        background: rgba(255,255,255,0.5);
-        font-size: 27px;
-    }
-</style>

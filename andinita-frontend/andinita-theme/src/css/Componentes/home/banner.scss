@@ -1,0 +1,46 @@
+
+.banner{
+    position: relative;
+    top: -117px;
+    border-radius: 47px;
+    height: 323px;
+    margin-bottom: -93px;
+
+    img{
+        width: 227px;
+        display: inline-block;
+        float: right;
+        position: relative;
+        top: 51px;
+        left: -33px
+    }
+
+    h3{
+        color: white;
+        font-size: 57px;
+    }
+
+    p{
+        color: white;
+        font-size: 22px;
+    }
+
+    .col-md-8{
+        padding: 51px;
+    }
+
+    button{
+        width: 236px;
+        background: transparent;
+        color: white;
+        font-size: 25px;
+        border-radius: 11px;
+        cursor: pointer;
+        margin-left: 42px;
+        &:hover{
+            background: rgba(255,255,255,0.5);
+            font-size: 27px;
+        }
+    }
+
+}
