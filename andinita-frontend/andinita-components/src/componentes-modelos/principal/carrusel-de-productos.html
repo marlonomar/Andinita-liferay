@@ -11,7 +11,7 @@
 
 <script type="text/html" id="itemProducto">
 
-    <div class="producto" id="{ID}">
+    <div class="producto" id="{ID}" data-toggle="modal" data-target="{MODAL}">
         <div class="foto">
             <img src="{IMAGE}" alt="{TITULO}">
         </div>
@@ -21,6 +21,23 @@
             <p>Precio : <strong>R$ {PRECIO}</strong></p>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="{ID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+             
+            </div>
+            <div class="modal-body">
+              <p>id2<p>
+            </div>
+            <div class="modal-footer">
+             
+            </div>
+          </div>
+        </div>
+      </div>
 
 </script>
 
@@ -44,6 +61,7 @@
                            .replace(/{PRECIO}/g,producto[i].price)
                            .replace(/{ID}/g,producto[i]._id)
                            .replace(/{IMAGE}/g,producto[i].image)
+                           .replace(/{MODAL}/g,'#'+producto[i]._id)
              
                 $(".${tipoDeProducto.getData()}").append(item)
                 
@@ -52,5 +70,10 @@
     }
 
     monstrarProductos();
-
+    function modal(){
+        $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+        })
+    }
+    modal()
 </script>
