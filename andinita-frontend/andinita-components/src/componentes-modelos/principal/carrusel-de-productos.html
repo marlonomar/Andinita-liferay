@@ -45,11 +45,11 @@
                 <div class="modal-footer">
                   
                   <div class="cantidad">
-                      <button class="menos" disabled="disabled"><i class="fas fa-minus"></i></button>
+                      <button class="restar" disabled="disabled"><i class="fas fa-minus"></i></button>
                       <span class="valor">1</span>
-                      <button class="mas"><i class="fas fa-plus"></i></button>
+                      <button class="sumar"><i class="fas fa-plus"></i></button>
+                      <button class="btn btn-danger carrito" valor="{PRECIO}"><i class="fas fa-shopping-cart" ></i> Añadir R$ <strong class='precio'>{PRECIO}</strong></button>
                   </div> 
-                  <button class="btn btn-danger"><i class="fas fa-shopping-cart" valor="{PRECIO}"></i> Añadir R$ <i>{PRECIO}</i></button>
                 </div>
               </div>
             </div>
@@ -76,8 +76,19 @@
      }
 
      .cantidad button{
-         
+        background: red;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        width: 29px;
+        cursor: pointer;
      }
+
+     .cantidad .carrito{
+        width: 173px;
+        margin-left: 20px;
+     }
+
  </style>
 <script>
 
@@ -107,35 +118,56 @@
                 
                 
             }
-            calcularCantidadProductos()
+
+            calcularPrecio('.sumar','sumar');
+            calcularPrecio('.restar','restar');
+       
         });
-        
+     
     }
 
     monstrarProductos();
 
-    function calcularCantidadProductos(id){
+    function calcularPrecio(boton,operador){
+        $(boton).click(function(){
 
-        $(".mas").click(function(){
-            let valor =  parseFloat($(this).siblings('span').html());
-            let cantidad = parseInt(valor + 1);
-            $(this).siblings('span').html(cantidad);
-            if(cantidad >= 1 || valor > 1){
-                $(".menos").removeAttr('disabled')
-            }
-        });
+            var cantidad;
+            let valor =  parseFloat($(this).closest('.cantidad').find('span').text());
 
-        $(".menos").click(function(){
-            let valor =  parseFloat($(this).siblings('span').html());
-            let cantidad = parseInt(valor - 1);
-            $(this).siblings('span').html(cantidad);
-            if(cantidad <= 1 || valor == 1){
-                $(".menos").attr('disabled','true')
+            if(operador == 'sumar'){
+                cantidad = parseInt(valor + 1);
             }
-          
-            
-        });
+            else{
+                cantidad = parseInt(valor - 1);
+            }
+
+            let valorFijo = parseInt($(this).closest('.cantidad').find('.carrito').attr('valor')); 
+            $(this).siblings('span').html(cantidad);
+
+            if(cantidad >=1){
+                $(".restar").removeAttr('disabled')
+            }
+
+            if(cantidad <= 1){
+                $(".restar").attr('disabled','true')
+            }
+
+            var carrito = parseFloat( $(this).closest('.cantidad').find('.carrito').find('.precio').text());
+
+            if(operador == 'sumar'){
+                var precioFinal = parseInt(valorFijo * cantidad)
+            }else{
+                var precioFinal = parseInt(carrito - valorFijo)
+            }
+
+            $(this).closest('.cantidad').find('.carrito').find('.precio').text(precioFinal)
+        })
     }
 
    })
 </script>
+
+
+
+
+
