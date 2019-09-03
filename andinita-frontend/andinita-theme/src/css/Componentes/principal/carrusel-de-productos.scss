@@ -36,6 +36,44 @@
         }
     }
 
+    .modal{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding-left: 34%;
+        padding-top: 8%;
+        padding-right: 17px;
+
+        .modal-content{
+            img {
+                width :400px;
+                height: 200px;
+             }
+
+             .modal-footer {
+                input{
+                    width: 227px;
+                }
+
+                .cantidad {
+                    button{
+                        background: red;
+                        border: none;
+                        border-radius: 8px;
+                        color: white;
+                        width: 29px;
+                        cursor: pointer;
+                     }
+
+                     .carrito{
+                        width: 173px;
+                        margin-left: 20px;
+                     }
+                }
+             }
+        }
+     }
+
 }
     
    

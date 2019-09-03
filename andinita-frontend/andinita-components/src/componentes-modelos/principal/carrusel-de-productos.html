@@ -48,7 +48,7 @@
                       <button class="restar" disabled="disabled"><i class="fas fa-minus"></i></button>
                       <span class="valor">1</span>
                       <button class="sumar"><i class="fas fa-plus"></i></button>
-                      <button class="btn btn-danger carrito" valor="{PRECIO}"><i class="fas fa-shopping-cart" ></i> Añadir R$ <strong class='precio'>{PRECIO}</strong></button>
+                      <button class="btn btn-danger carrito" valor="{PRECIO}" producto="{ID}"><i class="fas fa-shopping-cart" ></i> Añadir R$ <strong class='precio'>{PRECIO}</strong></button>
                   </div> 
                 </div>
               </div>
@@ -56,40 +56,7 @@
           </div>
 
 </script>
- <style>
-     .modal{
-        display: none;
-        justify-content: center;
-        align-items: center;
-        padding-left: 34%;
-        padding-top: 8%;
-        padding-right: 17px
-     }
-
-     .modal .modal-content img {
-        width :400px;
-        height: 200px;
-     }
-
-     .modal-footer input{
-         width: 227px;
-     }
-
-     .cantidad button{
-        background: red;
-        border: none;
-        border-radius: 8px;
-        color: white;
-        width: 29px;
-        cursor: pointer;
-     }
-
-     .cantidad .carrito{
-        width: 173px;
-        margin-left: 20px;
-     }
-
- </style>
+ 
 <script>
 
    $(document).ready(function(){
@@ -121,6 +88,7 @@
 
             calcularPrecio('.sumar','sumar');
             calcularPrecio('.restar','restar');
+            crearPedido();
        
         });
      
@@ -161,10 +129,43 @@
             }
 
             $(this).closest('.cantidad').find('.carrito').find('.precio').text(precioFinal)
+           
         })
     }
 
-   })
+    function crearPedido(){
+        $(".carrito").click(function(){
+         
+            let producto = $(this).attr('producto');
+            let precio = $(this).attr('valor');
+            let cantidad = parseInt($(this).closest('.cantidad').find('span').text());
+            let precioFinal = parseInt($(this).closest('.cantidad').find('.carrito').find('.precio').text());
+
+            var settings = {
+
+            "url": "https://andinita-serse.herokuapp.com/Buy/create-buy",
+            "method": "POST",
+            "data": {
+                "product":producto,
+                "price": precio,
+                "quantity":cantidad,
+                "total": precioFinal
+                }
+            }
+
+            $.ajax(settings).done(function (response) {
+                  $(".vacio").hide();
+                  console.log(response)
+                });
+
+              
+            });
+
+            
+    }
+
+    
+})
 </script>
 
 
