@@ -9,11 +9,7 @@
     </div>
 </div>
 
-<style>
-.modal{
-    display: none;
-}
-</style>
+
 <script type="text/html" id="itemProducto">
 
     <div class="producto" id="{MODAL}" data-toggle="modal" data-target="{MODAL}" producto="{ID}">
@@ -30,7 +26,7 @@
     <!-- Modal -->
     <div class="modal fade" id="{ID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+              <div class="modal-content" >
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">{TITULO}</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -48,13 +44,43 @@
                       <button class="restar" disabled="disabled"><i class="fas fa-minus"></i></button>
                       <span class="valor">1</span>
                       <button class="sumar"><i class="fas fa-plus"></i></button>
-                      <button class="btn btn-danger carrito" valor="{PRECIO}" producto="{ID}"><i class="fas fa-shopping-cart" ></i> Añadir R$ <strong class='precio'>{PRECIO}</strong></button>
+                      <button class="btn btn-danger carrito " data-dismiss="modal"  valor="{PRECIO}" producto="{ID}"><i class="fas fa-shopping-cart"></i> Añadir R$ <strong class='precio'>{PRECIO}</strong></button>
                   </div> 
                 </div>
               </div>
             </div>
           </div>
 
+</script>
+
+<script type="text/html" id="itemCarrito">
+    <li>
+        <div class="item">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{FOTO}" alt="{TITULO}">
+                </div>
+                <div class="col-md-7">
+                    <h3>{TITULO}</h3>
+                </div>
+                <div class="col-md-2">
+                    <span class="detele">
+                        <i class="fas fa-times-circle"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Qtd:{CANTIDAD}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Valor: R$ {VALOR}</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </li>
+    
 </script>
  
 <script>
@@ -97,6 +123,7 @@
     monstrarProductos();
 
     function calcularPrecio(boton,operador){
+
         $(boton).click(function(){
 
             var cantidad;
@@ -134,30 +161,38 @@
     }
 
     function crearPedido(){
+
         $(".carrito").click(function(){
-         
+            $(".vacio").hide()
             let producto = $(this).attr('producto');
             let precio = $(this).attr('valor');
             let cantidad = parseInt($(this).closest('.cantidad').find('span').text());
             let precioFinal = parseInt($(this).closest('.cantidad').find('.carrito').find('.precio').text());
-
+            
             var settings = {
-
-            "url": "https://andinita-serse.herokuapp.com/Buy/create-buy",
-            "method": "POST",
-            "data": {
-                "product":producto,
-                "price": precio,
-                "quantity":cantidad,
-                "total": precioFinal
+                "url": "https://andinita-serse.herokuapp.com/productos/get-producto/"+producto,
+                "method": "GET"
                 }
-            }
 
-            $.ajax(settings).done(function (response) {
-                  $(".vacio").hide();
-                  console.log(response)
+                $.ajax(settings).done(function (response) {
+
+                    let pedido = {
+                        item : response,
+                        quantity : cantidad,
+                        totalPrice : precioFinal
+                    }
+            
+                    let producto = pedido.item.producto[0];
+                    let item = $("#itemCarrito").clone().html();
+                    item = item.replace(/{FOTO}/g,producto.image)
+                               .replace(/{TITULO}/g,producto.title)
+                               .replace(/{CANTIDAD}/g,pedido.quantity)
+                               .replace(/{VALOR}/g,pedido.totalPrice)
+                    $("div.productos").show();       
+                    $("div.productos > ul").append(item)
+                   
+
                 });
-
               
             });
 
@@ -167,7 +202,6 @@
     
 })
 </script>
-
 
 
 

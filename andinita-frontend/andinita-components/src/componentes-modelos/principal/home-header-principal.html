@@ -44,10 +44,12 @@
                             </button>
                             <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                                 <div class="vacio">
-                                    <p>el carrito esta vacio</p>  
+                                    <p>el carrito esta vacio</p>
+                                    <i class="fas fa-shopping-cart"></i> 
                                 </div>
-                                <div class="productos">
+                                <div class="productos" style="display:none">
                                     <ul></ul>
+                                    <button class="btn btn-danger" id="comprar"><i class="fas fa-dollar-sign"></i>  Comprar</button>
                                 </div>
                             </div>
                         </div>
@@ -57,6 +59,44 @@
         </div>
     </div>
     
+    <style>
+       div.productos  ul  li  div  span {
+            position: relative;
+            left: -13px;
+            cursor: pointer;
+        }
+       div.productos  ul  li  div  span :hover{
+            color: red;
+        }
+        #comprar{
+            background: red;
+            color: white;
+        }
+        div.dropdown.Carrito.show  div{
+        width: 251px;
+        }
+
+        div.productos ul{
+            list-style:none;
+            padding: 0px;
+        }
+    
+        div.productos ul li .item img{
+            width: 100%;
+            height:100%;
+            border-radius: 100%;
+        }
+
+        div.productos {
+            padding:10px;
+        }
+
+        div.productos ul li .item h3{
+            font-size: 16px;
+            text-align: center;
+        }
+
+    </style>
     <script>
     
     $(document).ready(function(){
